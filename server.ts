@@ -14,7 +14,7 @@ async function startServer() {
   app.use(cors());
   app.use(express.json({ limit: '50mb' }));
 
-  // Proxy to Google Apps Script
+  // Proxy to Google Apps Script for saving
   app.post("/api/uploadAndSave", async (req, res) => {
     const APPS_SCRIPT_URL = process.env.APPS_SCRIPT_URL;
     if (!APPS_SCRIPT_URL) {
@@ -33,6 +33,30 @@ async function startServer() {
     } catch (error) {
       console.error("Proxy Error:", error);
       res.status(500).json({ error: "Failed to proxy request to Apps Script." });
+    }
+  });
+
+  // Proxy to Google Apps Script for fetching history
+  app.get("/api/history", async (req, res) => {
+    const APPS_SCRIPT_URL = process.env.APPS_SCRIPT_URL;
+    if (!APPS_SCRIPT_URL) {
+      return res.status(500).json({ error: "APPS_SCRIPT_URL is not configured." });
+    }
+
+    try {
+      // For GET requests, we can send action as a query parameter or use POST with action: 'getHistory'
+      // Google Apps Script doPost is often easier to handle for JSON payloads
+      const response = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify({ action: 'getHistory' }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+
+      const data = await response.json();
+      res.json(data);
+    } catch (error) {
+      console.error("Proxy Error:", error);
+      res.status(500).json({ error: "Failed to fetch history from Apps Script." });
     }
   });
 

@@ -151,13 +151,37 @@ export default function App() {
   const [customName, setCustomName] = useState("My Custom Color");
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  // Load history and favorites from localStorage
+  // Load history and favorites from localStorage and cloud
   useEffect(() => {
     const savedHistory = localStorage.getItem('colorMixHistory');
     const savedFavorites = localStorage.getItem('colorMixFavorites');
     if (savedHistory) setHistory(JSON.parse(savedHistory));
     if (savedFavorites) setFavorites(JSON.parse(savedFavorites));
+    
+    // Fetch all history from cloud on load
+    fetchHistory();
   }, []);
+
+  const fetchHistory = async () => {
+    try {
+      const response = await fetch('/api/history');
+      if (response.ok) {
+        const cloudHistory = await response.json();
+        if (Array.isArray(cloudHistory) && cloudHistory.length > 0) {
+          // Merge with local history, avoiding duplicates by ref
+          setHistory(prev => {
+            const combined = [...cloudHistory, ...prev];
+            const unique = combined.filter((item, index, self) =>
+              index === self.findIndex((t) => t.ref === item.ref)
+            );
+            return unique.slice(0, 100); // Keep more items for cloud history
+          });
+        }
+      }
+    } catch (error) {
+      console.error("Failed to fetch cloud history:", error);
+    }
+  };
 
   // Save history and favorites to localStorage
   useEffect(() => {
@@ -373,6 +397,8 @@ export default function App() {
       const data = await response.json();
       if (data.success) {
         console.log('Successfully saved to Google Sheets and Drive!');
+        // Refresh history from cloud after saving
+        fetchHistory();
       } else {
         console.error('Failed to save to cloud:', data.error);
       }
@@ -979,7 +1005,16 @@ export default function App() {
               onClick={e => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-6 md:mb-8">
-                <h2 className="text-lg md:text-xl font-bold uppercase tracking-tight">Mix History</h2>
+                <div className="flex items-center gap-4">
+                  <h2 className="text-lg md:text-xl font-bold uppercase tracking-tight">Mix History</h2>
+                  <button 
+                    onClick={fetchHistory}
+                    className="p-2 hover:bg-white/5 rounded-full text-cyan-400 transition-all active:rotate-180 duration-500"
+                    title="Refresh History"
+                  >
+                    <RotateCcw className="w-4 h-4" />
+                  </button>
+                </div>
                 <button onClick={() => setShowHistory(false)} className="p-2 hover:bg-white/5 rounded-full">
                   <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
                 </button>

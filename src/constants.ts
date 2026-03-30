@@ -174,10 +174,44 @@ export const BRANDS: BrandData[] = [
   {
     name: "Propan",
     categories: {
-      "Custom Mix": [
-        { name: "Base White", hex: "#FFFFFF", rgb: "255, 255, 255", cmyk: "0, 0, 0, 0", ref: "PR-C01" },
-        { name: "Base Red", hex: "#FF0000", rgb: "255, 0, 0", cmyk: "0, 100, 100, 0", ref: "PR-C02" },
-        { name: "Base Blue", hex: "#0000FF", rgb: "0, 0, 255", cmyk: "100, 100, 0, 0", ref: "PR-C03" }
+      "Neutral & Whites": [
+        { name: "Excellent White", hex: "#F0F0F0", rgb: "240, 240, 240", cmyk: "0, 0, 0, 6", ref: "PR-NW01" },
+        { name: "Pure White NP", hex: "#FFFFFF", rgb: "255, 255, 255", cmyk: "0, 0, 0, 0", ref: "PR-NW02" },
+        { name: "Off-White", hex: "#F5F5DC", rgb: "245, 245, 220", cmyk: "0, 0, 10, 4", ref: "PR-NW03" },
+        { name: "Sand White", hex: "#E6DBCB", rgb: "230, 219, 203", cmyk: "0, 5, 12, 10", ref: "PR-NW04" },
+        { name: "Papyrus White", hex: "#E2E0D5", rgb: "226, 224, 213", cmyk: "0, 1, 6, 11", ref: "PR-NW05" },
+        { name: "Urban Light", hex: "#D3D3D3", rgb: "211, 211, 211", cmyk: "0, 0, 0, 17", ref: "PR-NW06" },
+        { name: "Camelia White", hex: "#F4F1EA", rgb: "244, 241, 234", cmyk: "0, 1, 4, 4", ref: "PR-NW07" }
+      ],
+      "Grey & Turquoise": [
+        { name: "Soft Grey", hex: "#B2B2B2", rgb: "178, 178, 178", cmyk: "0, 0, 0, 30", ref: "PR-GT01" },
+        { name: "Antique Grey", hex: "#8A8A8A", rgb: "138, 138, 138", cmyk: "0, 0, 0, 46", ref: "PR-GT02" },
+        { name: "Calm Grey", hex: "#A9A9A9", rgb: "169, 169, 169", cmyk: "0, 0, 0, 34", ref: "PR-GT03" },
+        { name: "Blue Ash", hex: "#899499", rgb: "137, 148, 153", cmyk: "10, 3, 0, 40", ref: "PR-GT04" },
+        { name: "Tosca Green", hex: "#48D1CC", rgb: "72, 209, 204", cmyk: "66, 0, 2, 18", ref: "PR-GT05" }
+      ],
+      "Blues & Purples": [
+        { name: "French Blue", hex: "#4169E1", rgb: "65, 105, 225", cmyk: "71, 53, 0, 12", ref: "PR-BP01" },
+        { name: "Seven Seas", hex: "#2A52BE", rgb: "42, 82, 190", cmyk: "78, 57, 0, 25", ref: "PR-BP02" },
+        { name: "Marine Blue", hex: "#000080", rgb: "0, 0, 128", cmyk: "100, 100, 0, 50", ref: "PR-BP03" },
+        { name: "Blue Crush", hex: "#3B7A9F", rgb: "59, 122, 159", cmyk: "63, 23, 0, 38", ref: "PR-BP04" },
+        { name: "Lavender Drops", hex: "#E6E6FA", rgb: "230, 230, 250", cmyk: "8, 8, 0, 2", ref: "PR-BP05" },
+        { name: "Rich Plum", hex: "#673147", rgb: "103, 49, 71", cmyk: "0, 52, 31, 60", ref: "PR-BP06" }
+      ],
+      "Vibrant Series": [
+        { name: "Sunny at Heart", hex: "#FFD700", rgb: "255, 215, 0", cmyk: "0, 16, 100, 0", ref: "PR-VS01" },
+        { name: "Solid Gold", hex: "#DAA520", rgb: "218, 165, 32", cmyk: "0, 24, 85, 15", ref: "PR-VS02" },
+        { name: "Canary Yellow", hex: "#FFFF8F", rgb: "255, 255, 143", cmyk: "0, 0, 44, 0", ref: "PR-VS03" },
+        { name: "Leaf Green", hex: "#228B22", rgb: "34, 139, 34", cmyk: "76, 0, 76, 45", ref: "PR-VS04" },
+        { name: "Lush Meadow", hex: "#008080", rgb: "0, 128, 128", cmyk: "100, 0, 0, 50", ref: "PR-VS05" },
+        { name: "Fiesta Orange", hex: "#FF7518", rgb: "255, 117, 24", cmyk: "0, 54, 91, 0", ref: "PR-VS06" },
+        { name: "Pumpkin Spice", hex: "#FF7518", rgb: "255, 117, 24", cmyk: "0, 54, 91, 0", ref: "PR-VS07" }
+      ],
+      "Red & Brown": [
+        { name: "Chili Red", hex: "#E34234", rgb: "227, 66, 52", cmyk: "0, 71, 77, 11", ref: "PR-RB01" },
+        { name: "Maroon", hex: "#800000", rgb: "128, 0, 0", cmyk: "0, 100, 100, 50", ref: "PR-RB02" },
+        { name: "Havana Brown", hex: "#8B4513", rgb: "139, 69, 19", cmyk: "0, 50, 86, 45", ref: "PR-RB03" },
+        { name: "Brick Red", hex: "#A52A2A", rgb: "165, 42, 42", cmyk: "0, 75, 75, 35", ref: "PR-RB04" }
       ]
     }
   },
