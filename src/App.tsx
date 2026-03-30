@@ -507,7 +507,7 @@ export default function App() {
                   ))}
                 </div>
               </h1>
-              <p className="text-[7px] md:text-[10px] text-white/40 uppercase tracking-[0.2em] font-mono">Professional Paint Simulation v2.0</p>
+              <p className="text-[7px] md:text-[10px] text-white/40 uppercase tracking-[0.2em] font-mono">Simulasi Warna untuk Cat Avian, Mowilex, Nippon Paint, Dana Paint, Propan secara automatis.</p>
             </div>
           </div>
 
